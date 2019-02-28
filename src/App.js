@@ -1,13 +1,20 @@
 import React from "react";
-import MainMenu from "./mainMenu";
+import { BrowserRouter, Route } from "react-router-dom";
+import MainMenu from "./shared/mainMenu";
+import { PostList } from "./views/posts";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   render() {
     return (
-      <header>
-        <MainMenu site_name="My First React App" />
-        <h1>My First React App</h1>
-      </header>
+      <BrowserRouter>
+        <div>
+          <MainMenu site_name="My First React App" />
+          
+          <Route exact path="/" component={ () => <h2>Homepage</h2>} />
+          <Route path="/posts" component={ PostList } />
+        </div>
+      </BrowserRouter>
     );
   }
 }
